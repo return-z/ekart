@@ -12,7 +12,7 @@ const Item = ( { item }) => {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   const handleAddToCart = () => {
-    if (user.result) {
+    if (user) {
       dispatch(addToCart({ item : item , userId: user?.result?._id }));
     } else {
       alert('Sign-in to add items to cart');
