@@ -27,10 +27,12 @@ const Home = ({ open, filterCategory }) => {
       <Container>
         <Grid container justify="center" alignItems="stretch" spacing={3}>
           <Grid item xs={12} sm={12}><Typography variant="h5" style={{fontFamily:'montserrat'}}>Recommended items just for you:</Typography></Grid>
-          <Grid item xs={12} sm={12} style={{display:'flex'}}>
+          <Grid item xs={12} sm={12} style={{display:'flex', flexDirection:'column'}}>
             <Typography variant="h5" style={{fontFamily:'montserrat'}}>Sort By:</Typography>
-            <Chip label="Price (lowest to highest)" style={{margin:'0px 8px'}} onClick={() => setSortType('l2h')}></Chip>
-            <Chip label="Price (highest to lowest)" style={{margin:'0px 8px'}} onClick={() => setSortType('h2l')}></Chip>
+            <Grid item xs={12} sm={12} style={{display:'flex'}}>
+              <Chip label="Price (lowest to highest)" style={{margin:'0px'}} onClick={() => setSortType('l2h')}></Chip>
+              <Chip label="Price (highest to lowest)" style={{margin:'0px 8px'}} onClick={() => setSortType('h2l')}></Chip>
+            </Grid>
           </Grid>
           <Grid item xs={12} sm={12}>
             <Items filterCategory={filterCategory} sortType={sortType} />

@@ -17,7 +17,6 @@ const Cart = ({ open }) => {
   useEffect(() => {
     if(user.result){
       dispatch(fetchCartItems({ userId : user?.result?._id }))
-      console.log('hi')
     }
   }, [dispatch])
 
@@ -51,31 +50,23 @@ const Cart = ({ open }) => {
       <div id="cart-items" ><Typography variant="h6" style={{fontFamily:'montserrat', fontSize:"2.5em"}}>Items in your cart</Typography></div>
         {cartItems.length ? 
           cartItems.map((item) => (
-          <>
-          <Grid key={item._id} item style={{display:'flex', flexDirection:'row'}} xs={12} sm={12} md={12}>
-            <div key="item-info" style={{display:'flex', flexDirection:'row', alignItems:'center', width:'100%'}}>
+            <Grid container>
               <Grid item xs={12} sm={7} md={7} style={{display:'flex', padding:'16px', width:'100%'}}>
                 <div key="image" style={{display:'flex', alignItems:'center'}}><img src={item.image} alt={item.title} style={{height:'50px', width:'50px'}} /></div>
-                <div id="text" style={{justifyContent:'center', padding:'16px', width:'100%'}}>
+                <div key="text" style={{padding:'16px'}}>
                   <Typography variant="h5" style={{ fontFamily:'Montserrat' }}>{item.title}</Typography>
                   <Typography variant="h6" style={{fontFamily:'montserrat', fontWeight:"400"}}>{`$ ${item.price}`}</Typography>
                 </div>
               </Grid>
-              <Grid item xs={12} sm={5} md={5} style={{display:'flex'}}>
-                <div id="quantity" style={{display:'flex', flexDirection:'row', alignItems:'center', width:'100%', justifyContent:'center'}}>
+              <Grid item xs={12} sm={5} md={5} style={{display:'flex', alignItems:'center', justifyContent:'flex-end'}}>
                   <Typography style={{padding: '16px', fontFamily:'montserrat'}}>Quantity :</Typography>
                   <Button variant="contained" disabled={item.quantity <= 1} className={classes.button} onClick={()=>handleDecrease(item)} ><RemoveOutlinedIcon fontSize="small" /></Button>
                   <Typography variant="h6" style={{padding: '16px'}}>{item.quantity}</Typography>
                   <Button variant="contained" className={classes.button} onClick={()=>handleIncrease(item)} ><AddOutlinedIcon fontSize="small" /></Button>
-                </div>
-                <div id="delete" style={{display:'flex', alignItems:'center'}}>
-                  <Button variant="contained" className={classes.button} onClick={()=>handleDelete(item)}><DeleteOutlineOutlinedIcon fontSize="default" /></Button>
-                </div>
+                  <div style={{padding:'16px'}}><Button variant="contained" className={classes.button} onClick={()=>handleDelete(item)}><DeleteOutlineOutlinedIcon fontSize="default" /></Button></div>
               </Grid>
-            </div>
-          </Grid>
-          <Divider style={{width:'100%'}} />
-          </>
+              <Divider style={{width:'100%'}} />
+            </Grid>
         )) : null}
         <div id="grand-total" style={{display:'flex', width:'100%', justifyContent:'flex-end'}}><Typography variant="h6" style={{fontFamily:'montserrat', fontSize:"2em"}}>{totalPrice ? `Grand Total : $ ${totalPrice}` : null}</Typography></div>
         </Grid>

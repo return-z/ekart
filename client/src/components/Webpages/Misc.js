@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import Items from '../Home/Items/Items';
-import { Container, Grid, Typography } from '@material-ui/core';
+import { Container, Grid, Typography, Chip } from '@material-ui/core';
 import { fetchItems } from '../../actions/items'
 import useStyles from '../Navbar/styles'
 import clsx from 'clsx';
@@ -9,12 +9,13 @@ import clsx from 'clsx';
 const Misc = ({ open }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [sortType, setSortType] = useState('l2h');
 
   useEffect(() => {
     dispatch(fetchItems());
   }, [dispatch])
 
-  const filterCategory = 'Misc';
+  const filterCategory='Misc';
 
   return (
     <main
@@ -28,8 +29,15 @@ const Misc = ({ open }) => {
           <Grid item xs={12} sm={12}>
             <Typography variant="h5" style={{fontFamily:'montserrat'}}>{`Recommended ${filterCategory.toLowerCase()} for you:`}</Typography>
           </Grid>
+          <Grid item xs={12} sm={12} style={{display:'flex', flexDirection:'column'}}>
+            <Typography variant="h5" style={{fontFamily:'montserrat'}}>Sort By:</Typography>
+            <Grid item xs={12} sm={12} style={{display:'flex'}}>
+              <Chip label="Price (lowest to highest)" style={{margin:'0px'}} onClick={() => setSortType('l2h')}></Chip>
+              <Chip label="Price (highest to lowest)" style={{margin:'0px 8px'}} onClick={() => setSortType('h2l')}></Chip>
+            </Grid>
+          </Grid>
           <Grid item xs={12} sm={12}>
-            <Items filterCategory={filterCategory} />
+            <Items filterCategory={filterCategory} sortType={sortType} />
           </Grid>
         </Grid>
       </Container>

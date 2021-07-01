@@ -4,6 +4,7 @@ import { Card, CardMedia, CardContent, Typography, CardActionArea, CardActions, 
 import useStyles from './styles';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { addToCart } from '../../../../actions/cart';
+import { Link } from 'react-router-dom';
 
 const Item = ( { item }) => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Item = ( { item }) => {
 
   return (
     <Card className={classes.card}>
-      <CardActionArea style={{ textAlign : 'center' }}>
+      <CardActionArea style={{ textAlign : 'center' }} component={Link} to={{ pathname:`item/${item._id}`, state : {item}, } } >
         <CardMedia className={classes.media} image={item.image} title={item.title} />
         <CardContent style={{ padding : 5}}>
           <Typography variant="h5" className={classes.font}>{item.title}</Typography>

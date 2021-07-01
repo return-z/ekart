@@ -11,6 +11,7 @@ import Books from './components/Webpages/Books';
 import Electronics from './components/Webpages/Electronics';
 import Misc from './components/Webpages/Misc';
 import Sports from './components/Webpages/Sports';
+import ItemDetails from './components/Webpages/ItemDetails';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/electronics" exact render={() => <Electronics open={open}/>} />
           <Route path="/sports" exact render={() => <Sports open={open}/>} />
           <Route path="/misc" exact render={() => <Misc open={open}/>} />
+          <Route path="/item/:id" exact render={() => <ItemDetails open={open}/>} />
         </Switch>
       </Container>
     </BrowserRouter>

@@ -12,6 +12,7 @@ API.interceptors.request.use((req) => {
 
 export const fetchItems = () => API.get('/items');
 export const addItem = (itemData) => API.post('/items', itemData);
+export const itemProperties = (id) => API.post(`/items/${id}`);
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
