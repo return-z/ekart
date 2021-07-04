@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import useStyles from './styles';
 import clsx from 'clsx';
-import { useTheme, Button, Avatar, Badge } from '@material-ui/core';
+import { useTheme, Button, Avatar, Badge, ClickAwayListener } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -99,8 +99,8 @@ const Navbar = ({ open, setOpen }) => {
       </AppBar>
       <Drawer
         className={classes.drawer}
-        variant="persistent"
         anchor="left"
+        onBackdropClick={handleDrawerClose}
         open={open}
         classes={{
           paper: classes.drawerPaper,
@@ -115,7 +115,7 @@ const Navbar = ({ open, setOpen }) => {
         <Typography variant="h6" align="center">Shop by category</Typography>
         <List>
           {categories.map((obj) => (
-            <ListItem button component={Link} to={`/${obj.link}`} key={obj.category}>
+            <ListItem button component={Link} to={`/${obj.link}`} key={obj.category} onClick={() => setOpen(!open)}>
               <ListItemText primary={obj.category} />
             </ListItem>
           ))}
