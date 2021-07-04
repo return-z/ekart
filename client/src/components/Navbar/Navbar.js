@@ -29,10 +29,6 @@ const Navbar = ({ open, setOpen }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-
-  const cartItems = useSelector((state) => state.cart);
-  let numberOfCartItems = 0;
-  cartItems.map((item) => numberOfCartItems+=item.quantity)
   
   const logout = () => {
     dispatch({ type : 'LOGOUT' });
@@ -50,6 +46,10 @@ const Navbar = ({ open, setOpen }) => {
     if (user?.result)
       dispatch(fetchCartItems({ userId : user?.result?._id }))
   }, [location, dispatch]);
+
+  const cartItems = useSelector((state) => state.cart);
+  let numberOfCartItems = 0;
+  cartItems.map((item) => numberOfCartItems+=item.quantity)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -83,13 +83,12 @@ const Navbar = ({ open, setOpen }) => {
             <div id="login" style={{display:'flex', alignItems:'center'}}>
               {user ? (
                 <>
-                <div style={{margin: theme.spacing(1)}}>
-                  <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                </div>
                 <div style={{padding: '8px 16px'}}>
                   <Badge badgeContent={numberOfCartItems} component={Link} to="/cart" color="secondary"><ShoppingCartIcon fontSize="large" style={{color:'#f5fcff'}} /></Badge>
                 </div>
-                <Button variant="contained" color="secondary" onClick={logout}>Logout</Button></>
+                <div style={{padding: '8px 4px'}}>
+                <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
+                </div></>
               ) : (
                 <Button component={Link} to="/auth" variant="contained" color="secondary">Sign In</Button>
               ) }
