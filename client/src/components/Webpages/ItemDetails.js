@@ -27,15 +27,15 @@ const ItemDetails = ( {open} ) => {
       })}
       >
     <div className={classes.drawerHeader} />
-      <Grid container spacing={3} style={{display:'flex', flexWrap:'nowrap'}}>
-        <Grid item >
-          <img src={item.image} alt='image' style={{height:'500px', width:'500px'}}/>
+      <Grid container spacing={3}>
+        <Grid item xs={12} style={{display:"flex", flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
+          <img src={item.image} alt='image' style={{height:'400px', width:'350px'}}/>
           <Grid style={{display:"flex", justifyContent:'center'}}>
-            <Button variant="contained" color="Primary" style={{margin:'8px', width:'100%'}} onClick={handleAddToCart}>Add to Cart</Button>
-            <Button variant="contained" color="Secondary" style={{margin:'8px', width:'100%'}} component={Link} to="/cart">Buy Now</Button>
+            <Button variant="contained" color="Primary" style={{margin:'8px'}} onClick={handleAddToCart}>Add to Cart</Button>
+            <Button variant="contained" color="Secondary" style={{margin:'8px'}} component={Link} to="/cart">Buy Now</Button>
           </Grid>
         </Grid>
-        <Grid item key="title" style={{display:'flex', flexDirection:'column',justifyContent:'center', padding:'16px'}}>
+        <Grid item key="title" xs ={12} style={{display:'flex', flexDirection:'column',justifyContent:'center', padding:'16px', alignItems:'center'}}>
           <Typography variant="h5" style={{fontFamily:'montserrat'}}>{item.title}</Typography>
           <Typography variant="h3" style={{fontFamily:'montserrat'}}>{`$ ${item.price}`}</Typography>
           <ul>
