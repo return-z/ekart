@@ -32,8 +32,8 @@ const WomenApparel = ({ open }) => {
           <Grid item xs={12} sm={12} style={{display:'flex', flexDirection:'column'}}>
             <Typography variant="h5" style={{fontFamily:'montserrat'}}>Sort By:</Typography>
             <Grid item xs={12} sm={12} style={{display:'flex', flexWrap:'wrap'}}>
-              <Chip label="Price (lowest to highest)" style={{margin:'8px'}} onClick={() => setSortType('l2h')}></Chip>
-              <Chip label="Price (highest to lowest)" style={{margin:'8px'}} onClick={() => setSortType('h2l')}></Chip>
+              <Chip label="Price (low to high)" style={{margin:'8px'}} onClick={() => setSortType('l2h')}></Chip>
+              <Chip label="Price (high to low)" style={{margin:'8px'}} onClick={() => setSortType('h2l')}></Chip>
             </Grid>
           </Grid>
           <Grid item xs={12} sm={12}>
