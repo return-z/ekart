@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Item from './Item/Item';
 import { Grid, Typography } from '@material-ui/core';
-import modcheck from '../../../Icons/sadge.png';
+import pepepls from '../../../Icons/tenor.gif';
 
 const Items = ({ filterCategory, sortType }) => {
   let items = useSelector((state) => state.items);
@@ -18,8 +18,7 @@ const Items = ({ filterCategory, sortType }) => {
   return (
     !items.length ? (
       <div id="sadge" style={{ display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center' }}>
-        <img src={modcheck} style={{ padding : '16px'}} alt="no such products"/>
-        <Typography variant="h4" style={{ padding : '8px'}}>Can't find anything like this...</Typography>
+        <img src={pepepls} style={{ padding : '16px'}} alt="no such products"/>
       </div>
       ) : (
       <Grid container alignItems="stretch" spacing={3} >
