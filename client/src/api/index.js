@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://e-kart-app.herokuapp.com/' });
+const API = axios.create({ baseURL: 'https://ekart-2021.onrender.com/' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
